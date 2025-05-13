@@ -33,6 +33,7 @@ export class UsersService {
     const { data, error } = await supabase
       .from(this.#table)
       .insert(user)
+      .select('id')
       .single();
 
     if (error) throw error;
@@ -45,6 +46,7 @@ export class UsersService {
       .from(this.#table)
       .delete()
       .eq("id", id)
+      .select('id')
       .single();
 
     if (error) throw error;

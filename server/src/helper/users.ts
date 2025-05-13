@@ -17,7 +17,10 @@ export const convertUserToRawUser = (user: user): rawUser => ({
   org_id: user.orgId,
 });
 
-export async function retry<T>(fn: () => Promise<T>, retries = 3): Promise<T> {
+export const retry = async <T>(
+  fn: () => Promise<T>,
+  retries = 3
+): Promise<T> => {
   let lastError;
 
   for (let attempt = 1; attempt <= retries; attempt++) {
@@ -30,4 +33,4 @@ export async function retry<T>(fn: () => Promise<T>, retries = 3): Promise<T> {
   }
 
   throw lastError;
-}
+};
