@@ -48,12 +48,16 @@ const UserManagment = () => {
 
   return (
     <>
-      <Pagination
-        count={numberOfPages}
-        page={page}
-        onChange={(_, value) => setPage(value)}
-        shape="rounded"
-      />
+      {numberOfPages > 0 ? (
+        <Pagination
+          count={numberOfPages}
+          page={page}
+          onChange={(_, value) => setPage(value)}
+          shape="rounded"
+        />
+      ) : (
+        <> </>
+      )}
       <Box sx={{ display: "flex" }}>
         <PaginatedList
           users={users ?? []}
